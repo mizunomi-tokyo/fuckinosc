@@ -1,9 +1,4 @@
-
-====
-
-Overview
-
-## Description
+<!-- ## Description -->
 
 ## Requirement
 ハード：
@@ -37,7 +32,10 @@ Arduino IDEから書き込んでください。
 シリアルモニタに表示されるSSID/PASSでネットワークに接続してください。
 
 http://192.168.4.1/　にアクセスするとWiFi設定画面が開きます。
+
+
 <img width="340" alt="2017-11-20 13 48 29" src="https://user-images.githubusercontent.com/30066904/33002784-ac7fd048-cdf9-11e7-8437-1ad911337ad2.png">
+
 
 接続したいSSIDとそのPASSを入力して"送信"を押せば設定完了です。
 
