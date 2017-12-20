@@ -259,100 +259,44 @@ void func_MPU9250() {
   Serial.println((float)myIMU.sumCount / myIMU.sum, 2);
 
   // make OSC message
-  OSCMessage msg1("/ax");
+  OSCMessage msg1("/a");
   msg1.add(1000 * myIMU.ax);
+  msg1.add(1000 * myIMU.ay);
+  msg1.add(1000 * myIMU.az);
   Udp.beginPacket(outIp, outPort);
   msg1.send(Udp);
   Udp.endPacket();
   msg1.empty();
 
   // make OSC message
-  OSCMessage msg2("/ay");
-  msg2.add(1000 * myIMU.ay);
+  OSCMessage msg2("/g");
+  msg2.add(myIMU.gx);
+  msg2.add(myIMU.gy);
+  msg2.add(myIMU.gz);
   Udp.beginPacket(outIp, outPort);
   msg2.send(Udp);
   Udp.endPacket();
   msg2.empty();
 
   // make OSC message
-  OSCMessage msg3("/az");
-  msg3.add(1000 * myIMU.az);
+  OSCMessage msg3("/m");
+  msg3.add(myIMU.mx);
+  msg3.add(myIMU.my);
+  msg3.add(myIMU.mz);
   Udp.beginPacket(outIp, outPort);
   msg3.send(Udp);
   Udp.endPacket();
   msg3.empty();
 
   // make OSC message
-  OSCMessage msg4("/gx");
-  msg4.add(myIMU.gx);
+  OSCMessage msg4("/ahrs");
+  msg4.add(myIMU.yaw);
+  msg4.add(myIMU.pitch);
+  msg4.add(myIMU.roll);
   Udp.beginPacket(outIp, outPort);
   msg4.send(Udp);
   Udp.endPacket();
   msg4.empty();
-
-  // make OSC message
-  OSCMessage msg5("/gy");
-  msg5.add(myIMU.gy);
-  Udp.beginPacket(outIp, outPort);
-  msg5.send(Udp);
-  Udp.endPacket();
-  msg5.empty();
-
-  // make OSC message
-  OSCMessage msg6("/gz");
-  msg6.add(myIMU.gz);
-  Udp.beginPacket(outIp, outPort);
-  msg6.send(Udp);
-  Udp.endPacket();
-  msg6.empty();
-
-  // make OSC message
-  OSCMessage msg7("/mx");
-  msg7.add(myIMU.mx);
-  Udp.beginPacket(outIp, outPort);
-  msg7.send(Udp);
-  Udp.endPacket();
-  msg7.empty();
-
-  // make OSC message
-  OSCMessage msg8("/my");
-  msg8.add(myIMU.my);
-  Udp.beginPacket(outIp, outPort);
-  msg8.send(Udp);
-  Udp.endPacket();
-  msg8.empty();
-
-  // make OSC message
-  OSCMessage msg9("/mz");
-  msg9.add(myIMU.mz);
-  Udp.beginPacket(outIp, outPort);
-  msg9.send(Udp);
-  Udp.endPacket();
-  msg9.empty();
-
-  // make OSC message
-  OSCMessage msg10("/yaw");
-  msg10.add(myIMU.yaw);
-  Udp.beginPacket(outIp, outPort);
-  msg10.send(Udp);
-  Udp.endPacket();
-  msg10.empty();
-
-  // make OSC message
-  OSCMessage msg11("/pitch");
-  msg11.add(myIMU.pitch);
-  Udp.beginPacket(outIp, outPort);
-  msg11.send(Udp);
-  Udp.endPacket();
-  msg11.empty();
-
-  // make OSC message
-  OSCMessage msg12("/roll");
-  msg12.add(myIMU.roll);
-  Udp.beginPacket(outIp, outPort);
-  msg12.send(Udp);
-  Udp.endPacket();
-  msg12.empty();
 
   delay(WAIT * 1000);
 }
